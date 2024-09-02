@@ -49,7 +49,7 @@ Tema 3: Despliegue de aplicaciones
 La evaluación consta de tres partes diferentes:
 
 * Prueba intersemestral - 14 de octubre de 2024 - (15%)
-* Desarrollo de una aplicación y presentación - Evaluación continuna y Presentación - 29 de noviembre de 2023 - (50%)
+* Desarrollo de una aplicación y presentación - Evaluación continuna y Presentación - (50%)
 * Exámen teórico-práctico sobre los contenidos de la asignatura - diciembre de 2024 - (35%)
 
 Evaluación de la aplicación:
