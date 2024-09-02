@@ -72,15 +72,17 @@ __Todos los desarrollos se guardarán dentro de este repositorio en el proyecto 
 
 El código deberá ser escrito en Python y se recomiendan los siguientes entornos:
 
-Google Colab (online): https://colab.google/
+[Google Colab (online)](https://colab.google/)
 
-Anaconda (local): https://www.anaconda.com/products/individual-d
+[Anaconda (local)](https://www.anaconda.com/products/individual-d)
 
-Virtualenvwrapper (local) https://virtualenvwrapper.readthedocs.io/en/latest/
+[Virtualenvwrapper (local)](https://virtualenvwrapper.readthedocs.io/en/latest/)
 
-The Hitchhiker’s Guide to Python!: https://docs.python-guide.org/
+[The Hitchhiker’s Guide to Python](https://docs.python-guide.org/)
 
 [Cómo escribir código de calidad](https://docs.python-guide.org/#writing-great-python-code)
+
+[Scikit-Learn](https://scikit-learn.org/stable/index.html)
  
 
 
