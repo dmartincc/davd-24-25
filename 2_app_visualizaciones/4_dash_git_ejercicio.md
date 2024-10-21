@@ -3,14 +3,14 @@
 ## Pull repositorio
 
 ```
-git pull git@github.com:dmartincc/davd-23-24.git
+git pull git@github.com:dmartincc/davd-24-25.git
 ```
 Ahora que hemos bajado el repositorio a proceder a:
 
 ## Ir al folder donde tenemos el servidor de dash.
 
 ```
-cd Tema_2_app_visualizaciones/ 
+cd 2_app_visualizaciones/ 
 ```
 
 ## Instalar entorno virtual y sus dependencias.
@@ -35,7 +35,7 @@ Ahora con nuestro entorno virtual con todas las dependencias necesarias podemos 
 ## Arrancar el servidor de dash.
 
 ```
-python 3.\ Introduccion\ a\ Dash.py
+python 2_Introduccion_a_Dash.py
 ```
 
 Carga en el navegador la url: http://127.0.0.1:8050/
@@ -45,7 +45,7 @@ Revisa el código del script de python que hemos arrancado y estudia los compone
 Ahora, procedemos a arrancar el servidor con callbacks.
 
 ```
-python 4.\ Callbacks\ y\ componentes\ core.py
+python 4_Callbacks_componentes_core.py
 ```
 
 
