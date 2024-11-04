@@ -1,17 +1,17 @@
-# Despliegue de una Aplicación Dash en Heroku
+# Despliegue de una Aplicación Dash en Render
 
-Heroku es una plataforma de despliegue de aplicaciones web fácil de usar. A continuación, se detallan los pasos para desplegar una aplicación Dash en Heroku.
+Render es una plataforma de despliegue de aplicaciones web fácil de usar. A continuación, se detallan los pasos para desplegar una aplicación Dash en Render.
 
-## Paso 1: Registro en Heroku
+## Paso 1: Registro en Render
 
-Primero, regístrate en Heroku y obtén un nombre de usuario y contraseña. Luego, instala la [CLI de Heroku](https://devcenter.heroku.com/articles/heroku-cli).
+Primero, regístrate en Render y crea un repositorio en github.
 
 ## Paso 2: Configuración Inicial
 
 Crea un repositorio y un entorno virtual para tu aplicación Dash.
 
 ```bash
-git init
+cd "Your folder"
 virtualenv venv
 source venv/bin/activate
 ```
@@ -55,8 +55,6 @@ Modifica el archivo __src/app.py__ y añade el código necesario para tu aplicac
 
 3. Push código a github
 
-[Cómo crear y desplegar plotly dash apps](https://medium.com/@ahossack07/create-and-deploy-plotly-dash-apps-to-the-internet-for-free-49ebca9633da)
-
 ## Paso 6: Actualización de la Aplicación
 
 Si necesitas actualizar tu aplicación, sigue estos pasos:
@@ -65,7 +63,11 @@ Si necesitas actualizar tu aplicación, sigue estos pasos:
 git status # visualiza los cambios realizados
 git add . # añade todos los cambios
 git commit -m 'Descripción de los cambios realizados'
-git push heroku master # actualiza la aplicación en Heroku
+git push -u origin main
 ```
 
-¡Listo! Ahora puedes desplegar y actualizar tu aplicación Dash en Heroku de manera sencilla.
+¡Listo! Ahora puedes desplegar y actualizar tu aplicación Dash en Render de manera sencilla.
+
+En el siguiente artículo puedes entender el proceso en más detalle.
+
+[Cómo crear y desplegar plotly dash apps](https://medium.com/@ahossack07/create-and-deploy-plotly-dash-apps-to-the-internet-for-free-49ebca9633da)
