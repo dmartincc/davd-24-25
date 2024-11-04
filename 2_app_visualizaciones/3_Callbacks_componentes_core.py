@@ -12,7 +12,7 @@ from plotly.subplots import make_subplots
 # Para este Dash, vamos a seleccionar un fichero de datos y realizar un dashboard descriptivo
 # sobre un conjunto de datos
 
-df = pd.read_csv("../Datos/StudentsPerformance.csv")
+df = pd.read_csv("../2_app_visualizaciones/Datos/StudentsPerformance.csv")
 
 # Crear opciones para las razas
 races = df["race/ethnicity"].unique().tolist()
