@@ -161,4 +161,6 @@ Si realizas cambios en tu aplicación, sigue estos pasos para actualizarla en pr
 
 Para obtener más información sobre el despliegue de aplicaciones Dash en Render, puedes consultar el artículo: [Cómo crear y desplegar aplicaciones Plotly Dash](https://medium.com/@ahossack07/create-and-deploy-plotly-dash-apps-to-the-internet-for-free-49ebca9633da).
 
+Proveedor alternativo para despliegue de aplicación [Pythonanywhere](https://www.pythonanywhere.com/). Tener en mente que la configuración de la aplicación puede cambiar debido al cambio de proveedor.
+
 ¡Listo! Con esta guía, ahora tienes todo lo necesario para desplegar y mantener tu aplicación Dash en Render de manera sencilla y estructurada.
