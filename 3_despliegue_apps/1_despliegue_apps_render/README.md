@@ -1,7 +1,3 @@
-Aquí tienes un README completo que incluye todos los pasos para desplegar una aplicación Dash en Render, junto con la estructura de proyecto recomendada y los archivos de configuración necesarios (`Procfile`, `render.yaml`, `requirements.txt`). Esta guía está diseñada para facilitar el proceso para estudiantes y evitar cualquier confusión.
-
----
-
 # Despliegue de una Aplicación Dash en Render
 
 Render es una plataforma sencilla y potente para desplegar aplicaciones web. Esta guía te ayudará a desplegar una aplicación Dash en Render utilizando una estructura de proyecto recomendada y los archivos necesarios. Las instrucciones están divididas en pasos para configuraciones en Linux y Windows, e incluyen cómo conectar GitHub y Render para un flujo de trabajo simplificado.
