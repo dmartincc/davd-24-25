@@ -1,73 +1,168 @@
+Aquí tienes un README completo que incluye todos los pasos para desplegar una aplicación Dash en Render, junto con la estructura de proyecto recomendada y los archivos de configuración necesarios (`Procfile`, `render.yaml`, `requirements.txt`). Esta guía está diseñada para facilitar el proceso para estudiantes y evitar cualquier confusión.
+
+---
+
 # Despliegue de una Aplicación Dash en Render
 
-Render es una plataforma de despliegue de aplicaciones web fácil de usar. A continuación, se detallan los pasos para desplegar una aplicación Dash en Render.
+Render es una plataforma sencilla y potente para desplegar aplicaciones web. Esta guía te ayudará a desplegar una aplicación Dash en Render utilizando una estructura de proyecto recomendada y los archivos necesarios. Las instrucciones están divididas en pasos para configuraciones en Linux y Windows, e incluyen cómo conectar GitHub y Render para un flujo de trabajo simplificado.
 
-## Paso 1: Registro en Render
+## Estructura de Proyecto Recomendada
 
-Primero, regístrate en Render y crea un repositorio en github.
+Antes de comenzar, asegúrate de que tu proyecto esté organizado de la siguiente manera. Esta estructura ayuda a mantener el código ordenado y facilita la configuración del despliegue:
 
-## Paso 2: Configuración Inicial
-
-Crea un repositorio y un entorno virtual para tu aplicación Dash.
-
-```bash
-cd "Your folder"
-virtualenv venv
-source venv/bin/activate
+```plaintext
+Tu_carpeta_de_proyecto/
+│
+├── src/                   # Carpeta con el código fuente de la aplicación               
+│   ├── __init__.py        # Archivo vacío para definir src como módulo (opcional)
+│   ├── graphics.py        # Archivo de gráficos a renderizar
+│   ├── model.py           # Archivo de entrenamiento e inferencias
+│   └── etl.py             # Archivo para cargar datos
+│
+├── app.py                 # Archivo principal de la aplicación Dash
+├── requirements.txt       # Archivo de dependencias de Python
+├── Procfile               # Archivo para especificar el comando de inicio en Render
+├── render.yaml            # Archivo de configuración para Render
+└── README.md              # Documentación del proyecto
 ```
 
-## Paso 3: Instalación de Dependencias
+### Archivos y Su Función
 
-Asegúrate de que todas las dependencias estén instaladas ejecutando el siguiente comando:
+1. **`app.py`**: Archivo principal de la aplicación Dash. Define el objeto `app` y la estructura de la interfaz de usuario.
 
-```bash
-pip install -r requirements.txt
-```
+   ```python
+   # app.py
+   import dash
+   
+   from dash import html
+   from src import graphics, etl
 
-## Paso 4: Crea una estructura para tu aplicación
+   app = dash.Dash(__name__)
+   app.layout = html.Div(children=[
+       html.H1("¡Hola, Render!"),
+       html.P("Esta es una aplicación Dash desplegada en Render.")
+   ])
 
-1. Crea un repositorio de git en tu carpeta de proyecto
+   if __name__ == "__main__":
+       app.run_server(debug=True)
+   ```
 
-```bash
-cd "Your folder"
-git init
-git add .
-git commit -m “Initial commit”
-```
+2. **`requirements.txt`**: Lista de dependencias necesarias para la aplicación. Render utilizará este archivo para instalar automáticamente los paquetes.
 
-2. Arranca dashtools dentro de tu repositorio de git
+   ```text
+   dash
+   gunicorn
+   ```
 
-```bash
-dashtools gui
-```
+3. **`Procfile`**: Archivo que indica a Render cómo ejecutar la aplicación en producción.
 
-3. Crea un proyecto en la pestaña crear
+   ```plaintext
+   web: gunicorn app:app
+   ```
 
-## Paso 5: Programa tu Aplicación
+4. **`render.yaml`**: Archivo de configuración que Render usa para automatizar el despliegue de la aplicación.
 
-Modifica el archivo __src/app.py__ y añade el código necesario para tu aplicación Dash.
+   ```yaml
+   services:
+     - type: web
+       name: dash-app
+       env: python
+       plan: free
+       buildCommand: "pip install -r requirements.txt"
+       startCommand: "gunicorn app:app"
+   ```
 
-## Paso 6: Despliegue de la Aplicación
+5. **`runtime.txt`**: Archivo de configuración que Render usa para automatizar seleccionar python runtime.
 
-1. Utiliza DashTools Deploy para desplegar en render.com utilizando la pestaña deploy
+   ```text
+   python-3.10.7
+   ```
+[Cómo configurar la versión de python en render]()
+   https://docs.render.com/python-version?_gl=1%2Aptov9w%2A_gcl_au%2AMjA3MTQ4NjI0NS4xNzMwNzEzMjM3%2A_ga%2AMjQ1MTk0ODY5LjE3MzA3MTMyMzg.%2A_ga_QK9L9QJC5N%2AMTczMTMyMDk0OC4yLjEuMTczMTMyMTcyMC42MC4wLjA.)
 
-2. Darse de alta en render.com
+5. **`README.md`**: Documentación del proyecto.
 
-3. Push código a github
+## Paso 1: Configuración del Entorno de Desarrollo
 
-## Paso 6: Actualización de la Aplicación
+1. **Crea o clona un repositorio Git para tu aplicación**:
 
-Si necesitas actualizar tu aplicación, sigue estos pasos:
+   ```bash
+   cd "Tu_carpeta_de_proyecto"
+   ```
 
-```bash
-git status # visualiza los cambios realizados
-git add . # añade todos los cambios
-git commit -m 'Descripción de los cambios realizados'
-git push -u origin main
-```
+   Si el repositorio no está inicializado en Git, hazlo ahora:
 
-¡Listo! Ahora puedes desplegar y actualizar tu aplicación Dash en Render de manera sencilla.
+   ```bash
+   git init
+   ```
 
-En el siguiente artículo puedes entender el proceso en más detalle.
+2. **Crea un entorno virtual** para tu aplicación Dash, de acuerdo con tu sistema operativo:
 
-[Cómo crear y desplegar plotly dash apps](https://medium.com/@ahossack07/create-and-deploy-plotly-dash-apps-to-the-internet-for-free-49ebca9633da)
+   - **En Linux:**
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate
+     ```
+   - **En Windows:**
+     ```cmd
+     python -m venv venv
+     venv\Scripts\activate
+     ```
+
+3. **Instala las dependencias** dentro del entorno virtual:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Paso 2: Conectar GitHub con Render
+
+1. **Sube tu proyecto a GitHub**:
+
+   - Crea un repositorio en GitHub (puedes hacerlo desde la interfaz web de GitHub). Luego, enlaza tu repositorio local con los siguientes comandos:
+
+     ```bash
+     git add .
+     git commit -m "Initial commit"
+     git remote add origin https://github.com/TuUsuario/TuRepositorio.git
+     git branch -M main
+     git push -u origin main
+     ```
+
+2. **Inicia sesión en Render** y conecta tu cuenta de GitHub:
+
+   - Ve a [Render](https://render.com/) y selecciona **New > Web Service**.
+   - Conecta tu cuenta de GitHub y selecciona tu repositorio desde la lista de repositorios disponibles en Render.
+
+3. **Configura las opciones de despliegue**:
+
+   Render detectará el archivo `render.yaml` en la raíz del proyecto y configurará el servicio automáticamente.
+
+## Paso 3: Despliegue de la Aplicación en Render
+
+1. **Crea el servicio en Render**:
+
+   - Una vez que Render haya detectado tu configuración en `render.yaml`, haz clic en **Create Web Service**.
+   - Render comenzará a construir y desplegar la aplicación; esto puede tardar unos minutos. Al finalizar, Render proporcionará una URL para acceder a tu aplicación.
+
+2. **Verifica la Aplicación**: Una vez que Render haya terminado el despliegue, accede a la URL proporcionada para verificar que tu aplicación está funcionando correctamente.
+
+## Paso 4: Actualización de la Aplicación
+
+Si realizas cambios en tu aplicación, sigue estos pasos para actualizarla en producción:
+
+1. **Guarda los cambios** y sube el código actualizado a GitHub:
+
+   ```bash
+   git add .
+   git commit -m "Descripción de los cambios realizados"
+   git push origin main
+   ```
+
+2. Render detectará automáticamente los nuevos cambios en el repositorio y reconstruirá la aplicación para reflejar las actualizaciones en producción.
+
+## Recursos Adicionales
+
+Para obtener más información sobre el despliegue de aplicaciones Dash en Render, puedes consultar el artículo: [Cómo crear y desplegar aplicaciones Plotly Dash](https://medium.com/@ahossack07/create-and-deploy-plotly-dash-apps-to-the-internet-for-free-49ebca9633da).
+
+¡Listo! Con esta guía, ahora tienes todo lo necesario para desplegar y mantener tu aplicación Dash en Render de manera sencilla y estructurada.
