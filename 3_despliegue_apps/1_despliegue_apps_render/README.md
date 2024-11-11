@@ -29,7 +29,6 @@ Tu_carpeta_de_proyecto/
    ```python
    # app.py
    import dash
-   
    from dash import html
    from src import graphics, etl
 
@@ -68,14 +67,6 @@ Tu_carpeta_de_proyecto/
        startCommand: "gunicorn app:app"
    ```
 
-5. **`runtime.txt`**: Archivo de configuración que Render usa para automatizar seleccionar python runtime.
-
-   ```text
-   python-3.10.7
-   ```
-[Cómo configurar la versión de python en render]()
-   https://docs.render.com/python-version?_gl=1%2Aptov9w%2A_gcl_au%2AMjA3MTQ4NjI0NS4xNzMwNzEzMjM3%2A_ga%2AMjQ1MTk0ODY5LjE3MzA3MTMyMzg.%2A_ga_QK9L9QJC5N%2AMTczMTMyMDk0OC4yLjEuMTczMTMyMTcyMC42MC4wLjA.)
-
 5. **`README.md`**: Documentación del proyecto.
 
 ## Paso 1: Configuración del Entorno de Desarrollo
@@ -111,7 +102,30 @@ Tu_carpeta_de_proyecto/
    pip install -r requirements.txt
    ```
 
-## Paso 2: Conectar GitHub con Render
+## Paso 2: Ejecutar el Servidor Localmente
+
+Antes de desplegar la aplicación, es recomendable ejecutarla en local para verificar que funciona correctamente. Sigue estos pasos:
+
+1. **Asegúrate de estar en el entorno virtual**:
+   
+   - **Linux**: Ejecuta `source venv/bin/activate`.
+   - **Windows**: Ejecuta `venv\Scripts\activate`.
+
+2. **Ejecuta la aplicación**:
+
+   ```bash
+   python app.py
+   ```
+
+3. **Accede a la aplicación en tu navegador**:
+
+   Después de iniciar el servidor, abre tu navegador y ve a [http://127.0.0.1:8050](http://127.0.0.1:8050). Aquí deberías ver tu aplicación Dash ejecutándose en local.
+
+4. **Verifica y depura**:
+
+   Asegúrate de que la aplicación funciona correctamente. Si hay errores, revísalos en la consola y realiza las correcciones necesarias antes de proceder al despliegue en Render.
+
+## Paso 3: Conectar GitHub con Render
 
 1. **Sube tu proyecto a GitHub**:
 
@@ -134,7 +148,7 @@ Tu_carpeta_de_proyecto/
 
    Render detectará el archivo `render.yaml` en la raíz del proyecto y configurará el servicio automáticamente.
 
-## Paso 3: Despliegue de la Aplicación en Render
+## Paso 4: Despliegue de la Aplicación en Render
 
 1. **Crea el servicio en Render**:
 
@@ -143,7 +157,9 @@ Tu_carpeta_de_proyecto/
 
 2. **Verifica la Aplicación**: Una vez que Render haya terminado el despliegue, accede a la URL proporcionada para verificar que tu aplicación está funcionando correctamente.
 
-## Paso 4: Actualización de la Aplicación
+
+
+## Paso 5: Actualización de la Aplicación
 
 Si realizas cambios en tu aplicación, sigue estos pasos para actualizarla en producción:
 
@@ -161,6 +177,8 @@ Si realizas cambios en tu aplicación, sigue estos pasos para actualizarla en pr
 
 Para obtener más información sobre el despliegue de aplicaciones Dash en Render, puedes consultar el artículo: [Cómo crear y desplegar aplicaciones Plotly Dash](https://medium.com/@ahossack07/create-and-deploy-plotly-dash-apps-to-the-internet-for-free-49ebca9633da).
 
-Proveedor alternativo para despliegue de aplicación [Pythonanywhere](https://www.pythonanywhere.com/). Tener en mente que la configuración de la aplicación puede cambiar debido al cambio de proveedor.
+### Notas Importantes
 
-¡Listo! Con esta guía, ahora tienes todo lo necesario para desplegar y mantener tu aplicación Dash en Render de manera sencilla y estructurada.
+- **Proveedor Alternativo**: Si estás buscando una alternativa para desplegar la aplicación, puedes considerar [PythonAnywhere](https://www.pythonanywhere.com/). Ten en cuenta que la configuración de la aplicación puede variar al cambiar de proveedor, por lo que podrían requerirse ajustes en la estructura o en los archivos de configuración.
+
+- **Compatibilidad de Versión de Python con Numpy**: Si encuentras errores de compatibilidad de versión de Python, especialmente con librerías como **Numpy**, consulta la documentación de [selección de versión de Python en Render](https://docs.render.com/python-version?_gl=1%2Aptov9w%2A_gcl_au%2AMjA3MTQ4NjI0NS4xNzMwNzEzMjM3%2A_ga%2AMjQ1MTk0ODY5LjE3MzA3MTMyMzg.%2A_ga_QK9L9QJC5N%2AMTczMTMyMDk0OC4yLjEuMTczMTMyMTcyMC42MC4wLjA.) para asegurarte de que estás usando una versión compatible en tu archivo `render.yaml`.
